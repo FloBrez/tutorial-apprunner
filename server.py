@@ -1,6 +1,7 @@
 import os
 import json
 import boto3
+from waitress import serve
 from flask import Flask
 
 
@@ -35,9 +36,10 @@ def create_app():
             message = {'Error': 'DynamoDB access failed.'}
         return message
 
-
-    #if __name__ == "__main__":
-    #    port = int(os.environ.get("PORT"))
-    #    app.run(host='0.0.0.0', port=5000)
-
     return app
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT"))
+    app  = create_app()
+    serve(app, host='0.0.0.0', port=port)
