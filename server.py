@@ -2,13 +2,18 @@ import os
 import json
 import boto3
 from waitress import serve
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app():
     app = Flask(__name__)
 
-    @app.route('/')
+    @app.route("/", methods=['GET'])
+    def index():
+        return render_template('index.html')
+
+
+    @app.route('/hello')
     def hello_world():
         name = os.environ.get('NAME')
         if name == None or len(name) == 0:

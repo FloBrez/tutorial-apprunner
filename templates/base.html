@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{% endblock %}Momoport</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bulmaswatch-journal.min.css') }}">
+</head>
+
+<body class="has-navbar-fixed-top">
+<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item"><strong>momoport</strong></a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"></a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">Home</a>
+      <a class="navbar-item">API</a>
+    </div>
+    <div class="navbar-end">
+      <a class="navbar-item">Login</a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero is-small is-primary">
+  <div class="hero-body has-text-centered">
+        Alle Daten, Analysen und Rechner werden <Strong>ohne Gewähr</Strong> zur Verfügung gestellt! Die Seite befindet sich im Aufbau und Fehler sind zu erwarten!
+  </div>
+</section>
+
+
+<header>
+    {% block header %}
+    {% endblock %}
+</header>
+
+{% for message in get_flashed_messages() %}
+<section class="section">
+  <div class="notification is-danger">
+    <button class="delete"></button>
+    {{ message }}
+   </div>
+</section>
+{% endfor %}
+
+<section class="section">
+    <div class="container is-fullhd">
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
+
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>momoport</strong> wird von <strong>Florian Brezina</strong> betrieben.
+    </p>
+  </div>
+</footer>
+</body>
