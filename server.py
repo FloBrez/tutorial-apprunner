@@ -7,7 +7,7 @@ def hello_world():
     name = os.environ.get('NAME')
     if name == None or len(name) == 0:
         name = "world"
-    message = "Good morning, " + name + "!\n"
+    message = "Good morning with Flask, " + name + "!\n"
     return message
 
 if __name__ == "__main__":
